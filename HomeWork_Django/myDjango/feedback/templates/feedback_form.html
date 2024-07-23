@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create_feedback</title>
+    <style>
+        .main-container{
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(250, 242, 243, 255);
+        }
+        .button{
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #337ab7;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+            width: 30%;
+
+            &:hover{
+                background-color: #235a8e;
+            }
+        }
+        button[type='submit']{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #eee;
+            border-radius: 5px;
+            background-image: linear-gradient(to right, #003CC5 0%, #0B63F6 51%, #003CC5 100%);
+            cursor: pointer;
+        &:hover{
+            background-position: right center;
+            }
+        }
+        input, textarea{
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+         .cont-btn{
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+ <div class="main-container">
+     <h2>Create your feedback</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Отправить</button>
+    </form>
+    <div class="cont-btn">
+        <a class="button" href="{% url 'home' %}">Back to Home page</a>
+        <a class="button" href="{% url 'all_feedback' %}">Back to Feedback's</a>
+    </div>
+
+</div>
+</body>
+</html>

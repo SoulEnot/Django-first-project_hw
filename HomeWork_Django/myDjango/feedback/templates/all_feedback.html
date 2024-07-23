@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All_feedback</title>
+    <style>
+        .button{
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #337ab7;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+            width: 30%;
+            margin-top: 30px;
+            &:hover{
+                background-color: #235a8e;
+            }
+        }
+
+        .loader-container{
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(250, 242, 243, 255);
+            border: 2px solid #333;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .scroll{
+            width: 100%;
+            height: 400px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            }
+
+        .feedback{
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            padding: 5px;
+        }
+
+        .feedback-name {
+            font-weight: bold;
+        }
+
+        .feedback-message {
+            font-style: italic;
+        }
+
+        .cont-btn{
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="loader-container">
+            <h2>All feedbacks:</h2>
+            <div class="scroll">
+        {% for feedback in feedbacks %}
+        <div class="feedback">
+            <p class="feedback-name">{{ feedback.name }}: {{ feedback.created_at }}</p>
+            <p class="feedback-message">{{ feedback.message }}</p>
+        </div>
+        {% endfor %}
+            </div>
+            <div class="cont-btn">
+                <a class="button" href="{% url 'home' %}">Back to Home page</a>
+                <a class="button" href="{% url 'feedback_form' %}">Create new Feedback</a>
+            </div>
+    </div>
+
+
+</body>
+</html>
